@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -44,7 +45,7 @@ public class Book extends AbstractEntity {
 	 * MANY TO ONE
 	 */
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tb_publisher_id", nullable = true)
 	private Publisher publisher;
 
@@ -52,7 +53,7 @@ public class Book extends AbstractEntity {
 	 * MANY TO MANY
 	 */
 
-	@ManyToMany(mappedBy = "books")
+	@ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
 	private List<Author> authors;
 
 	/**

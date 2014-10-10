@@ -20,6 +20,6 @@ public class BookSOAPWebServiceClient {
 		BookSOAPWebService port = service.getPort(BookSOAPWebService.class);
 
 		System.out.println("Books:");
-		port.getAllBooks().forEach(System.out::println);
+		port.getAllBookDtos().forEach(System.out::println);
 	}
 }
