@@ -11,7 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlTransient;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.enums.Language;
 
@@ -47,7 +46,6 @@ public class Book extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "tb_publisher_id", nullable = true)
-	@XmlTransient
 	private Publisher publisher;
 
 	/*
@@ -55,7 +53,6 @@ public class Book extends AbstractEntity {
 	 */
 
 	@ManyToMany(mappedBy = "books")
-	@XmlTransient
 	private List<Author> authors;
 
 	/**
