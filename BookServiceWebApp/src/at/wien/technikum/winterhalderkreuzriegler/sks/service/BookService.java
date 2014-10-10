@@ -51,6 +51,9 @@ public class BookService {
 
 	private void checkPublisher(Publisher publisher)
 			throws PublisherNotFoundException {
+		if(publisher == null){
+			return;
+		}
 		Publisher publisherRead = em.find(Publisher.class, publisher.getId());
 		if (publisherRead == null) {
 			throw new PublisherNotFoundException();
@@ -59,6 +62,9 @@ public class BookService {
 
 	private void checkAuthorsExist(List<Author> authors)
 			throws AuthorNotFoundException {
+		if(authors == null){
+			return;
+		}
 		for (Author a : authors) {
 			checkAuthorExist(a);
 		}

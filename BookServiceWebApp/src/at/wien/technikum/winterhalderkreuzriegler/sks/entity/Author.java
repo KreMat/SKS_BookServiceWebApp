@@ -3,7 +3,7 @@
  */
 package at.wien.technikum.winterhalderkreuzriegler.sks.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author Richard und Matthias
@@ -19,17 +24,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tb_author")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {
 
 	private static final long serialVersionUID = 9035977779987405595L;
 
 	@Column(name = "firstname")
+	@XmlAttribute(name = "firstname")
 	private String firstname;
 
 	@Column(name = "lastname")
+	@XmlAttribute(name = "lastname")
 	private String lastname;
 
 	@Column(name = "birthday")
+	@XmlAttribute(name = "birthday")
 	private Date birthday;
 
 	/*
@@ -38,6 +48,7 @@ public class Author extends AbstractEntity {
 
 	@ManyToMany
 	@JoinTable(name = "tb_author_has_tb_book", joinColumns = { @JoinColumn(name = "tb_author_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "tb_book_id", nullable = false) })
+	@XmlTransient
 	private List<Book> books;
 
 	/**

@@ -9,27 +9,38 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
- * @author Matthias
+ * @author Richard and Matthias
  *
  */
 @Entity
 @Table(name = "tb_publisher")
+@XmlRootElement(name = "publisher")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Publisher extends AbstractEntity {
 
 	private static final long serialVersionUID = -3415256689285892364L;
 
 	@Column(name = "publishername")
+	@XmlAttribute(name = "name")
 	private String name;
 
 	@Column(name = "postcode")
+	@XmlAttribute(name = "postcode")
 	private String postcode;
 
 	@Column(name = "countrycode")
+	@XmlAttribute(name = "countrycode")
 	private String countrycode;
 
 	@OneToMany(mappedBy = "publisher")
+	@XmlTransient
 	private List<Book> books;
 
 	/**

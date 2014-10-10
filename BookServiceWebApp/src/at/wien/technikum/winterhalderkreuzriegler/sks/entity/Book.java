@@ -10,35 +10,52 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.enums.Language;
 
 @Entity
 @Table(name = "tb_book")
-@NamedQuery(name = "Book.selectAll", query = "SELECT b FROM Book b")
+@NamedQueries({
+		@NamedQuery(name = "Book.selectAll", query = "SELECT b FROM Book b"),
+		@NamedQuery(name = "Book.selectByTitle", query = "SELECT b FROM Book b WHERE b.title LIKE :title") })
+@XmlRootElement(name = "book")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Book extends AbstractEntity {
 
 	private static final long serialVersionUID = 5159413079703017063L;
 
 	@Column(name = "isbn")
+	@XmlAttribute(name = "isbn")
 	private String isbn;
 
 	@Column(name = "title")
+	@XmlAttribute(name = "title")
 	private String title;
 
 	@Column(name = "subtitle")
+	@XmlAttribute(name = "subtitle")
 	private String subtitle;
 
 	@Column(name = "description")
+	@XmlAttribute(name = "description")
 	private String description;
 
 	@Column(name = "pages")
+	@XmlAttribute(name = "pages")
 	private long pages;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "language")
+	@XmlAttribute(name = "language")
 	private Language language;
 
 	/*
@@ -47,6 +64,7 @@ public class Book extends AbstractEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tb_publisher_id", nullable = true)
+	@XmlElement(name = "publisher")
 	private Publisher publisher;
 
 	/*
@@ -54,6 +72,8 @@ public class Book extends AbstractEntity {
 	 */
 
 	@ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
+	@XmlElementWrapper(name = "authors")
+	@XmlElement(name = "author")
 	private List<Author> authors;
 
 	/**

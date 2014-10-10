@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.jws.WebService;
+import javax.xml.soap.SOAPException;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -38,9 +39,13 @@ public class BookSOAPWebServiceImpl implements BookSOAPWebService {
 	}
 
 	@Override
-	public void importBooks(List<Book> books) throws AuthorNotFoundException,
-			PublisherNotFoundException {
-		bookService.importBooks(books);
+	public void importBooks(List<Book> books) throws SOAPException{
+		
+		try {
+			bookService.importBooks(books);
+		} catch (AuthorNotFoundException | PublisherNotFoundException e) {
+			throw new SOAPException(e);
+		}
 	}
 
 	@Override
