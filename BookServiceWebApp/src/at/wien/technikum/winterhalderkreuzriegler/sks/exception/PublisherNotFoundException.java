@@ -1,7 +1,7 @@
 /**
  * 
  */
-package at.wien.technikum.winterhalderkreuzriegler.sks.service;
+package at.wien.technikum.winterhalderkreuzriegler.sks.exception;
 
 /**
  * @author Matthias

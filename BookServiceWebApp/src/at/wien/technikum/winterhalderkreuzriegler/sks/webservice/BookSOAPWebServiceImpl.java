@@ -10,9 +10,9 @@ import javax.jws.WebService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Book;
-import at.wien.technikum.winterhalderkreuzriegler.sks.service.AuthorNotFoundException;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.AuthorNotFoundException;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.PublisherNotFoundException;
 import at.wien.technikum.winterhalderkreuzriegler.sks.service.BookService;
-import at.wien.technikum.winterhalderkreuzriegler.sks.service.PublisherNotFoundException;
 import at.wien.technikum.winterhalderkreuzriegler.sks.webservice.dto.BookDto;
 
 @WebService(endpointInterface = "at.wien.technikum.winterhalderkreuzriegler.sks.webservice.BookSOAPWebService")

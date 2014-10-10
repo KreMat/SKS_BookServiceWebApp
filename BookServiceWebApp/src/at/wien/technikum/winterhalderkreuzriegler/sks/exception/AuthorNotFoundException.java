@@ -1,4 +1,4 @@
-package at.wien.technikum.winterhalderkreuzriegler.sks.service;
+package at.wien.technikum.winterhalderkreuzriegler.sks.exception;
 
 public class AuthorNotFoundException extends Exception {
 

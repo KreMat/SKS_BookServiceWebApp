@@ -6,8 +6,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Book;
-import at.wien.technikum.winterhalderkreuzriegler.sks.service.AuthorNotFoundException;
-import at.wien.technikum.winterhalderkreuzriegler.sks.service.PublisherNotFoundException;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.AuthorNotFoundException;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.PublisherNotFoundException;
 import at.wien.technikum.winterhalderkreuzriegler.sks.webservice.dto.BookDto;
 
 @WebService

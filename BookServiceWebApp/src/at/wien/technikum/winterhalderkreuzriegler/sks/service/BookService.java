@@ -14,6 +14,8 @@ import javax.persistence.TypedQuery;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Author;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Book;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Publisher;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.AuthorNotFoundException;
+import at.wien.technikum.winterhalderkreuzriegler.sks.exception.PublisherNotFoundException;
 
 /**
  * @author Richard and Matthias
