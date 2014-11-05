@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -23,6 +25,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "tb_publisher")
 @XmlRootElement(name = "publisher")
 @XmlAccessorType(XmlAccessType.FIELD)
+@NamedQueries({
+	@NamedQuery(name = "Publisher.selectByName", query = "SELECT p FROM Publisher p WHERE p.name LIKE :name") })
 public class Publisher extends AbstractEntity {
 
 	private static final long serialVersionUID = -3415256689285892364L;

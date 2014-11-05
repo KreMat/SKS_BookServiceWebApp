@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
 	@NamedQuery(name = "Author.selectAll", query = "SELECT a FROM Author b"),
 	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.firstname LIKE :firstname AND a.lastname LIKE :lastname"),
-	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname"),
-	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.id = :id") })
+	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {

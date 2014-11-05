@@ -54,8 +54,9 @@ public class BookService {
 		if (publisher == null) {
 			return;
 		}
-		Publisher publisherRead = em.find(Publisher.class, publisher.getId());
-		if (publisherRead == null) {
+		List<Publisher> publisherRead = em.createNamedQuery("Publisher.selectByName", Publisher.class)
+				.setParameter("name", publisher.getName()).getResultList();
+		if (publisherRead == null || publisherRead.isEmpty()) {
 			throw new PublisherNotFoundException();
 		}
 	}
@@ -72,8 +73,11 @@ public class BookService {
 	}
 
 	private void checkAuthorExist(Author a) throws AuthorNotFoundException {
-		Author author = em.find(Author.class, a.getId());
-		if (author == null) {
+		List<Author> authorsRead = em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
+				.setParameter("firstname", a.getFirstname())
+				.setParameter("lastname", a.getLastname())
+				.getResultList();
+		if (authorsRead == null || authorsRead.isEmpty()) {
 			throw new AuthorNotFoundException();
 		}
 	}
