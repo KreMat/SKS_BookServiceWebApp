@@ -19,6 +19,10 @@ public class CommandLineClient {
 
 	public static void main(String[] args) throws JAXBException, SOAPException_Exception{
 		
+		if(args.length != 1 || args[0].isEmpty()){
+			throw new IllegalArgumentException("You need one argument with the xml path!");
+		}
+
 		BookSOAPWebServiceImplService service = new BookSOAPWebServiceImplService();
 		BookSOAPWebService port = service.getBookSOAPWebServiceImplPort();
 		
@@ -29,6 +33,7 @@ public class CommandLineClient {
 		
 		port.importBooks(books);
 		
+		System.out.println("Import erfolgreich abgeschlossen...");
 	}
 	
 	/**
