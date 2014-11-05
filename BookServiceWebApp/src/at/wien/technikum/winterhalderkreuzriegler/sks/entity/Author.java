@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "tb_author")
 @NamedQueries({
-	@NamedQuery(name = "Author.selectAll", query = "SELECT a FROM Author b"),
+	@NamedQuery(name = "Author.selectAll", query = "SELECT a FROM Author a"),
 	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.firstname LIKE :firstname AND a.lastname LIKE :lastname"),
 	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname") })
 @XmlRootElement

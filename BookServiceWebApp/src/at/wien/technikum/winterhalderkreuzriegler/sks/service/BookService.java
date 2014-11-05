@@ -3,6 +3,7 @@
  */
 package at.wien.technikum.winterhalderkreuzriegler.sks.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -43,38 +44,45 @@ public class BookService {
 	public void importBooks(List<Book> books) throws AuthorNotFoundException,
 			PublisherNotFoundException {
 		for (Book b : books) {
-			checkAuthorsExist(b.getAuthors());
-			checkPublisher(b.getPublisher());
+			checkAuthorsExist(b);
+			checkPublisher(b);
 			em.persist(b);
 		}
 	}
 
-	private void checkPublisher(Publisher publisher)
+	private void checkPublisher(Book b)
 			throws PublisherNotFoundException {
-		if (publisher == null) {
+		if (b == null || b.getPublisher() == null) {
 			return;
 		}
-		Publisher publisherRead = em.find(Publisher.class, publisher.getId());
-		if (publisherRead == null) {
+		List<Publisher> publisherRead = em.createNamedQuery("Publisher.selectByName", Publisher.class)
+				.setParameter("name", b.getPublisher().getName()).getResultList();
+		if (publisherRead == null || publisherRead.isEmpty()) {
 			throw new PublisherNotFoundException();
 		}
+		b.setPublisher(publisherRead.get(0));
 	}
 
-	private void checkAuthorsExist(List<Author> authors)
+	private void checkAuthorsExist(Book b)
 			throws AuthorNotFoundException {
-		if (authors == null) {
+		if (b == null || b.getAuthors() == null) {
 			return;
 		}
-		for (Author a : authors) {
-			checkAuthorExist(a);
+		List<Author> readAuthors = new ArrayList<Author>();
+		for (Author a : b.getAuthors()) {
+			readAuthors.add(checkAuthorExist(a));
 		}
-
+		b.setAuthors(readAuthors);
 	}
 
-	private void checkAuthorExist(Author a) throws AuthorNotFoundException {
-		Author author = em.find(Author.class, a.getId());
-		if (author == null) {
+	private Author checkAuthorExist(Author a) throws AuthorNotFoundException {
+		Author authorRead = em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
+				.setParameter("firstname", a.getFirstname())
+				.setParameter("lastname", a.getLastname())
+				.getSingleResult();
+		if (authorRead == null) {
 			throw new AuthorNotFoundException();
 		}
+		return authorRead;
 	}
 }
