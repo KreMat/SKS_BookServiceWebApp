@@ -22,13 +22,33 @@ public class AuthorService {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	public List<Author> getAllAuthors() {
-		return em.createNamedQuery("Author.selectAll", Author.class).getResultList();
+		return em.createNamedQuery("Author.selectAll", Author.class)
+				.getResultList();
 	}
-	
-	public Author getAuthorById(long id){
+
+	public Author getAuthorById(long id) {
 		return em.find(Author.class, id);
+	}
+
+	public void createAuthor(Author author) {
+		em.createNamedQuery("Author.createAuthor", Author.class)
+				.setParameter("firstname", author.getFirstname())
+				.setParameter("lastname", author.getLastname())
+				.setParameter("birthday", author.getBirthday());
+	}
+
+	public void updateAuthor(Author author) {
+		em.createNamedQuery("Author.updateAuthor", Author.class)
+				.setParameter("firstname", author.getFirstname())
+				.setParameter("lastname", author.getLastname())
+				.setParameter("birthday", author.getBirthday())
+				.setParameter("id",author.getId());
+	}
+
+	public void deleteAuthor(long id) {
+		em.createNamedQuery("Author.deleteAuthor", Author.class).setParameter("id", id);
 	}
 
 }
