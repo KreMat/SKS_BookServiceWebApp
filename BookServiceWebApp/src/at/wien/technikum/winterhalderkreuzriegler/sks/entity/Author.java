@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,6 +26,11 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "tb_author")
+@NamedQueries({
+	@NamedQuery(name = "Author.selectAll", query = "SELECT a FROM Author b"),
+	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.firstname LIKE :firstname AND a.lastname LIKE :lastname"),
+	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname"),
+	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.id = :id") })
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Author extends AbstractEntity {
