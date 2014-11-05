@@ -12,7 +12,6 @@ import org.junit.Test;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Book;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Publisher;
 import at.wien.technikum.winterhalderkreuzriegler.sks.enums.Language;
-import at.wien.technikum.winterhalderkreuzriegler.sks.exception.PublisherNotFoundException;
 import at.wien.technikum.winterhalderkreuzriegler.sks.webservice.BookSOAPWebService;
 
 public class TestBookSOAPWebServiceClient {
@@ -55,8 +54,6 @@ public class TestBookSOAPWebServiceClient {
 		Service service = Service.create(wsdl, serviceName);
 		BookSOAPWebService port = service.getPort(BookSOAPWebService.class);
 
-		System.out.println("Books:");
-		
 		Publisher p = new Publisher();
 		p.setId(10000);
 		Book b = new Book();
@@ -67,7 +64,18 @@ public class TestBookSOAPWebServiceClient {
 		b.setPages(30);
 		b.setLanguage(Language.DE);
 		b.setPublisher(p);	
+
+		Book b2 = new Book();
+		b2.setIsbn("rollbackTest");
+		b2.setTitle("meinTitel");
+		b2.setSubtitle("meinUntertitel");
+		b2.setDescription("das ist ein tolles buch");
+		b2.setPages(30);
+		b2.setLanguage(Language.DE);
+		Publisher p2 = new Publisher();
+		p.setId(1);
+		b2.setPublisher(p2);
 		
-		port.importBooks(Arrays.asList(b));
+		port.importBooks(Arrays.asList(b2, b));
 	}
 }

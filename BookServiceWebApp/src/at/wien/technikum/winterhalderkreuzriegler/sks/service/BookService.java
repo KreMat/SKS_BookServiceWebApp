@@ -34,10 +34,10 @@ public class BookService {
 	}
 
 	public List<Book> findBooksByTitle(String title) {
-		TypedQuery<Book> query = em.createNamedQuery("Book.selectByTitle",
-				Book.class);
-		query.setParameter("title", title);
-		return query.getResultList();
+		return em.createNamedQuery("Book.selectByTitle", Book.class)
+				.setParameter("title", title).getResultList();
+		// query.setParameter("title", title);
+		// return query.getResultList();
 	}
 
 	public void importBooks(List<Book> books) throws AuthorNotFoundException,
@@ -51,7 +51,7 @@ public class BookService {
 
 	private void checkPublisher(Publisher publisher)
 			throws PublisherNotFoundException {
-		if(publisher == null){
+		if (publisher == null) {
 			return;
 		}
 		Publisher publisherRead = em.find(Publisher.class, publisher.getId());
@@ -62,7 +62,7 @@ public class BookService {
 
 	private void checkAuthorsExist(List<Author> authors)
 			throws AuthorNotFoundException {
-		if(authors == null){
+		if (authors == null) {
 			return;
 		}
 		for (Author a : authors) {
