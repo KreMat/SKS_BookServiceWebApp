@@ -34,14 +34,14 @@ public class AuthorResource {
 	}
 	
 	@POST
-	@Path("/{author}")
-	public void createAuthor(@PathParam("author") Author author){
+	public void createAuthor(Author author){
 		service.createAuthor(author);
 	}
 	
 	@PUT
-	@Path("/{author}")
-	public void updateAuthor(@PathParam("author") Author author){
+	@Path("/{authorId}")
+	public void updateAuthor(@PathParam("authorId") long authorId, Author author){
+		author.setId(authorId);
 		service.updateAuthor(author);
 	}
 	

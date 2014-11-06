@@ -33,22 +33,15 @@ public class AuthorService {
 	}
 
 	public void createAuthor(Author author) {
-		em.createNamedQuery("Author.createAuthor", Author.class)
-				.setParameter("firstname", author.getFirstname())
-				.setParameter("lastname", author.getLastname())
-				.setParameter("birthday", author.getBirthday());
+		em.persist(author);
 	}
 
 	public void updateAuthor(Author author) {
-		em.createNamedQuery("Author.updateAuthor", Author.class)
-				.setParameter("firstname", author.getFirstname())
-				.setParameter("lastname", author.getLastname())
-				.setParameter("birthday", author.getBirthday())
-				.setParameter("id",author.getId());
+		em.merge(author);
 	}
 
 	public void deleteAuthor(long id) {
-		em.createNamedQuery("Author.deleteAuthor", Author.class).setParameter("id", id);
+		em.remove(id);
 	}
 
 }

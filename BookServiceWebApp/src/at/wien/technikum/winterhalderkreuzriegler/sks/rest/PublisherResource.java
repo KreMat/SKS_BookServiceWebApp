@@ -34,14 +34,14 @@ public class PublisherResource {
 	}
 	
 	@POST
-	@Path("/{publisher}")
-	public void createPublisher(@PathParam("publisher") Publisher publisher){
+	public void createPublisher(Publisher publisher){
 		service.createPublisher(publisher);
 	}
 	
 	@PUT
-	@Path("/{publisher}")
-	public void updatePublisher(@PathParam("publisher") Publisher publisher){
+	@Path("/{publisherId}")
+	public void updatePublisher(@PathParam("publisherId") long publisherId, Publisher publisher){
+		publisher.setId(publisherId);
 		service.updatePublisher(publisher);
 	}
 	

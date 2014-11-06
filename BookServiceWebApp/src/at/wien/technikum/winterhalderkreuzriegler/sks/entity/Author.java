@@ -29,10 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
 	@NamedQuery(name = "Author.selectAll", query = "SELECT a FROM Author a"),
 	@NamedQuery(name = "Author.selectByFirstAndLastname", query = "SELECT a FROM Author a WHERE a.firstname LIKE :firstname AND a.lastname LIKE :lastname"),
-	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname"),
-	@NamedQuery(name = "Author.createAuthor", query = "INSERT INTO Author a (firstname, lastname, birthday) VALUES (:firstname, :lastname, :birthday"),
-	@NamedQuery(name = "Author.updateAuthor", query = "UPDATE Author a SET firstname = :firstname, lastname = :lastname, birthdate = :birthday WHERE a.id = :id"),
-	@NamedQuery(name = "Author.deleteAuthor", query = "DELETE FROM Author a WHERE a.id = :id")
+	@NamedQuery(name = "Author.selectByLastname", query = "SELECT a FROM Author a WHERE a.lastname LIKE :lastname")
 })
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

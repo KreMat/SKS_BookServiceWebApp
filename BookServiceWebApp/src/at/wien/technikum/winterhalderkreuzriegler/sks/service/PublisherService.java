@@ -33,21 +33,14 @@ public class PublisherService {
 	}
 
 	public void createPublisher(Publisher publisher) {
-		em.createNamedQuery("Publisher.createPublisher", Publisher.class)
-				.setParameter("publishername", publisher.getName())
-				.setParameter("postcode", publisher.getPostcode())
-				.setParameter("countrycode", publisher.getCountrycode());
+		em.persist(publisher);
 	}
 
 	public void updatePublisher(Publisher publisher) {
-		em.createNamedQuery("Publisher.updatePublisher", Publisher.class)
-		.setParameter("publishername", publisher.getName())
-		.setParameter("postcode", publisher.getPostcode())
-		.setParameter("countrycode", publisher.getCountrycode())
-		.setParameter("id", publisher.getId());
+		em.merge(publisher);
 	}
 
 	public void deletePublisher(long id) {
-		em.createNamedQuery("Publisher.deletePublisher", Publisher.class).setParameter("id", id);
+		em.remove(id);
 	}
 }

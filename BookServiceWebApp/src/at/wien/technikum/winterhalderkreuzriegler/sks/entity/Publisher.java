@@ -27,10 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
 	@NamedQuery(name = "Publisher.selectByName", query = "SELECT p FROM Publisher p WHERE p.name LIKE :name"),
-	@NamedQuery(name = "Publisher.selectAll", query = "SELECT ap FROM Publisher p"),
-	@NamedQuery(name = "Publisher.createPublisher", query = "INSERT INTO Publisher p (publishername, postcode, countrycode) VALUES (:publishername, :postcode, :countrycode"),
-	@NamedQuery(name = "Publisher.updatePublisher", query = "UPDATE Publisher p SET publishername = :publishername, postcode = :postcode, countrycode = :countrycode WHERE p.id = :id"),
-	@NamedQuery(name = "Publisher.deletePublisher", query = "DELETE FROM Publisher p WHERE p.id = :id")
+	@NamedQuery(name = "Publisher.selectAll", query = "SELECT p FROM Publisher p")
 })
 public class Publisher extends AbstractEntity {
 
