@@ -1,4 +1,4 @@
-package at.wien.technikum.winterhalderkreuzriegler.sks.client;
+package at.wien.technikum.winterhalderkreuzriegler.sks.client.helper;
 
 import java.util.ArrayList;
 import java.util.List;

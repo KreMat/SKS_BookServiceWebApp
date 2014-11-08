@@ -14,6 +14,7 @@ import at.technikumwien.sks.generated.Book;
 import at.technikumwien.sks.generated.BookSOAPWebService;
 import at.technikumwien.sks.generated.BookSOAPWebServiceImplService;
 import at.technikumwien.sks.generated.SOAPException_Exception;
+import at.wien.technikum.winterhalderkreuzriegler.sks.client.helper.Wrapper;
 
 public class CommandLineClient {
 
