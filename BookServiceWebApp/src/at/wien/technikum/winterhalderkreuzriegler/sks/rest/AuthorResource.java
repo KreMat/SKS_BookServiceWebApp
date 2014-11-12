@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,6 +24,7 @@ import at.wien.technikum.winterhalderkreuzriegler.sks.service.AuthorService;
 @Path("author")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Transactional
 public class AuthorResource {
 	
 	@Inject
