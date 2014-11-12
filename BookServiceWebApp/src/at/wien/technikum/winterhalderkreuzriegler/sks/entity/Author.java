@@ -3,6 +3,7 @@
  */
 package at.wien.technikum.winterhalderkreuzriegler.sks.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class Author extends AbstractEntity {
 	@ManyToMany
 	@JoinTable(name = "tb_author_has_tb_book", joinColumns = { @JoinColumn(name = "tb_author_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "tb_book_id", nullable = false) })
 	@XmlTransient
-	private List<Book> books;
+	private List<Book> books = new ArrayList<Book>();
 
 	/**
 	 * @return the firstname

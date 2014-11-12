@@ -3,6 +3,7 @@
  */
 package at.wien.technikum.winterhalderkreuzriegler.sks.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -47,7 +48,7 @@ public class Publisher extends AbstractEntity {
 
 	@OneToMany(mappedBy = "publisher")
 	@XmlTransient
-	private List<Book> books;
+	private List<Book> books = new ArrayList<Book>();
 
 	/**
 	 * @return the name

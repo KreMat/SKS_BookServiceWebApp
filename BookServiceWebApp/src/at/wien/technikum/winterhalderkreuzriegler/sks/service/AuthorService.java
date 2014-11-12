@@ -41,7 +41,7 @@ public class AuthorService {
 	}
 
 	public void deleteAuthor(long id) {
-		em.remove(id);
+		em.remove(em.find(Author.class,id));
 	}
 
 }

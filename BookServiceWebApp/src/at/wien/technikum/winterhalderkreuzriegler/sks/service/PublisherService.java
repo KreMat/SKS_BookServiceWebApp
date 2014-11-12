@@ -41,6 +41,6 @@ public class PublisherService {
 	}
 
 	public void deletePublisher(long id) {
-		em.remove(id);
+		em.remove(em.find(Publisher.class, id));
 	}
 }
