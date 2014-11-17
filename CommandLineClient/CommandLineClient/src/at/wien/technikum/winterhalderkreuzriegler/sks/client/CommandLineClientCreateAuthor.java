@@ -5,6 +5,7 @@ import java.text.ParseException;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.client.dto.AuthorDto;
 
@@ -20,14 +21,20 @@ public class CommandLineClientCreateAuthor {
 		
 		AuthorDto a = new AuthorDto(args[0], args[1], args[2]);
 
-		ClientBuilder
+		Response response = ClientBuilder
 				.newClient()
 				.target("http://localhost:8085/BookServiceWebApp/resources/author")
+				.register(new RequestFilter("myuser", "topsecret"))
 				.request(MediaType.APPLICATION_JSON)
 				.post(Entity.json(a));
+		
+		if(response.getStatus() != 200){
+			System.out.println("Import mit folgendem Fehler abgeschlossen: " + response.getStatusInfo().getReasonPhrase());
+		}else{
+			System.out.println("Import erfolgreich abgeschlossen...");
+		}
 
 
-		System.out.println("Import erfolgreich abgeschlossen...");
 	}
 
 }

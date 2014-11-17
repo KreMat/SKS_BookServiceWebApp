@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for SOAPException complex type.
+ * <p>Java-Klasse für SOAPException complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType name="SOAPException">
@@ -40,16 +40,16 @@ public class SOAPException {
     protected List<JAXBElement<String>> content;
 
     /**
-     * Gets the rest of the content model. 
+     * Ruft das restliche Contentmodell ab. 
      * 
      * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Message" is used by two different parts of a schema. See: 
-     * line 108 of http://localhost:8085/BookServiceWebApp/BookSOAPWebServiceImpl?wsdl
-     * line 107 of http://localhost:8085/BookServiceWebApp/BookSOAPWebServiceImpl?wsdl
+     * Sie rufen diese "catch-all"-Eigenschaft aus folgendem Grund ab: 
+     * Der Feldname "Message" wird von zwei verschiedenen Teilen eines Schemas verwendet. Siehe: 
+     * Zeile 108 von http://localhost:8085/BookServiceWebApp/BookSOAPWebServiceImpl?wsdl
+     * Zeile 107 von http://localhost:8085/BookServiceWebApp/BookSOAPWebServiceImpl?wsdl
      * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
+     * Um diese Eigenschaft zu entfernen, wenden Sie eine Eigenschaftenanpassung für eine
+     * der beiden folgenden Deklarationen an, um deren Namen zu ändern: 
      * Gets the value of the content property.
      * 
      * <p>

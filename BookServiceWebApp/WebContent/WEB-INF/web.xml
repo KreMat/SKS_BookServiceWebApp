@@ -13,4 +13,26 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>BookService</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>BookAdmin</role-name>
+			<role-name>BookUser</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-role>
+		<role-name>BookAdmin</role-name>
+	</security-role>
+	<security-role>
+		<role-name>BookUser</role-name>
+	</security-role>
 </web-app>

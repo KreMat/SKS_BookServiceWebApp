@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for publisher complex type.
+ * <p>Java-Klasse für publisher complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType name="publisher">
@@ -42,7 +42,7 @@ public class Publisher
     protected String countrycode;
 
     /**
-     * Gets the value of the name property.
+     * Ruft den Wert der name-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class Publisher
     }
 
     /**
-     * Sets the value of the name property.
+     * Legt den Wert der name-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class Publisher
     }
 
     /**
-     * Gets the value of the postcode property.
+     * Ruft den Wert der postcode-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class Publisher
     }
 
     /**
-     * Sets the value of the postcode property.
+     * Legt den Wert der postcode-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -90,7 +90,7 @@ public class Publisher
     }
 
     /**
-     * Gets the value of the countrycode property.
+     * Ruft den Wert der countrycode-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -102,7 +102,7 @@ public class Publisher
     }
 
     /**
-     * Sets the value of the countrycode property.
+     * Legt den Wert der countrycode-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
