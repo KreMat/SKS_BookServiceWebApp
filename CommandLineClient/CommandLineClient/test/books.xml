@@ -1,8 +1,8 @@
 <books>
-	<book isbn="123" title="title" subtitle="subtitle" description="description" pages="10" language="DE">
+	<book isbn="123" title="title-works" subtitle="subtitle-works" description="description" pages="10" language="DE">
 		<publisher name="Publisher1" postcode="40" countrycode="50" />
-<!-- 		<authors> -->
-<!-- 			<author firstname="firstname" lastname="lastname" birthdate="20.10.2000" /> -->
-<!-- 		</authors> -->
+		<authors>
+			<author firstname="firstname" lastname="lastname" birthdate="20.10.2000" />
+		</authors>
 	</book>
 </books>

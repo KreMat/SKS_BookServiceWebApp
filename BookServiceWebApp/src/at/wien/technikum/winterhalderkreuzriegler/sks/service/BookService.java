@@ -6,11 +6,15 @@ package at.wien.technikum.winterhalderkreuzriegler.sks.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
+import org.jboss.ejb3.annotation.SecurityDomain;
 
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Author;
 import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Book;
@@ -24,25 +28,25 @@ import at.wien.technikum.winterhalderkreuzriegler.sks.exception.PublisherNotFoun
  */
 @Stateless(name = "bookservice")
 @LocalBean
+@SecurityDomain("BookServiceWebAppSD")
+@Transactional(rollbackOn = Exception.class)
 public class BookService {
 
 	@PersistenceContext
 	private EntityManager em;
 
+	@RolesAllowed("BSRead")
 	public List<Book> getAllBooks() {
-		return em.createNamedQuery("Book.selectAll", Book.class)
-				.getResultList();
+		return em.createNamedQuery("Book.selectAll", Book.class).getResultList();
 	}
 
+	@RolesAllowed("BSRead")
 	public List<Book> findBooksByTitle(String title) {
-		return em.createNamedQuery("Book.selectByTitle", Book.class)
-				.setParameter("title", title).getResultList();
-		// query.setParameter("title", title);
-		// return query.getResultList();
+		return em.createNamedQuery("Book.selectByTitle", Book.class).setParameter("title", title).getResultList();
 	}
 
-	public void importBooks(List<Book> books) throws AuthorNotFoundException,
-			PublisherNotFoundException {
+	@RolesAllowed("BSWrite")
+	public void importBooks(List<Book> books) throws AuthorNotFoundException, PublisherNotFoundException {
 		for (Book b : books) {
 			checkAuthorsExist(b);
 			checkPublisher(b);
@@ -50,8 +54,7 @@ public class BookService {
 		}
 	}
 
-	private void checkPublisher(Book b)
-			throws PublisherNotFoundException {
+	private void checkPublisher(Book b) throws PublisherNotFoundException {
 		if (b == null || b.getPublisher() == null) {
 			return;
 		}
@@ -63,8 +66,7 @@ public class BookService {
 		b.setPublisher(publisherRead.get(0));
 	}
 
-	private void checkAuthorsExist(Book b)
-			throws AuthorNotFoundException {
+	private void checkAuthorsExist(Book b) throws AuthorNotFoundException {
 		if (b == null || b.getAuthors() == null) {
 			return;
 		}
@@ -76,13 +78,13 @@ public class BookService {
 	}
 
 	private Author checkAuthorExist(Author a) throws AuthorNotFoundException {
-		Author authorRead = em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
-				.setParameter("firstname", a.getFirstname())
-				.setParameter("lastname", a.getLastname())
-				.getSingleResult();
-		if (authorRead == null) {
+		try {
+			Author authorRead = em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
+					.setParameter("firstname", a.getFirstname()).setParameter("lastname", a.getLastname())
+					.getSingleResult();
+			return authorRead;
+		} catch (NoResultException e) {
 			throw new AuthorNotFoundException();
 		}
-		return authorRead;
 	}
 }

@@ -14,26 +14,18 @@ public class CommandLineClientCreateAuthor {
 	public static void main(String[] args) throws ParseException {
 
 		if (args.length != 3) {
-			throw new IllegalArgumentException("Usage: "
-					+ CommandLineClientCreateAuthor.class.getSimpleName()
+			throw new IllegalArgumentException("Usage: " + CommandLineClientCreateAuthor.class.getSimpleName()
 					+ " firstname lastname birthday (yyyy-MM-dd)");
 		}
-		
+
 		AuthorDto a = new AuthorDto(args[0], args[1], args[2]);
 
-		Response response = ClientBuilder
-				.newClient()
+		Response response = ClientBuilder.newClient()
 				.target("http://localhost:8085/BookServiceWebApp/resources/author")
-				.register(new RequestFilter("myuser", "topsecret"))
-				.request(MediaType.APPLICATION_JSON)
-				.post(Entity.json(a));
-		
-		if(response.getStatus() != 200){
-			System.out.println("Import mit folgendem Fehler abgeschlossen: " + response.getStatusInfo().getReasonPhrase());
-		}else{
-			System.out.println("Import erfolgreich abgeschlossen...");
-		}
+				.register(new RequestFilter("writer", "123")).request(MediaType.APPLICATION_JSON).post(Entity.json(a));
 
+		System.out.println("Import mit Status: " + response.getStatus() + " - "
+				+ response.getStatusInfo().getReasonPhrase() + " abgeschlossen.");
 
 	}
 

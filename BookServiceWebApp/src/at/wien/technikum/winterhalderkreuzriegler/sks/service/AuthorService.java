@@ -12,6 +12,7 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.jboss.ejb3.annotation.SecurityDomain;
 
@@ -23,8 +24,8 @@ import at.wien.technikum.winterhalderkreuzriegler.sks.entity.Author;
  */
 @Stateless(name = "authorservice")
 @LocalBean
-//@SecurityDomain("BookServiceWebAppSD")
-//@RolesAllowed("BookUser")
+@SecurityDomain("BookServiceWebAppSD")
+@Transactional(rollbackOn = Exception.class)
 public class AuthorService {
 
 	@PersistenceContext
@@ -33,26 +34,28 @@ public class AuthorService {
 	@Resource
 	SessionContext ctx;
 
+	@RolesAllowed("BSRead")
 	public List<Author> getAllAuthors() {
 		return em.createNamedQuery("Author.selectAll", Author.class)
 				.getResultList();
 	}
 
+	@RolesAllowed("BSRead")
 	public Author getAuthorById(long id) {
 		return em.find(Author.class, id);
 	}
 
+	@RolesAllowed("BSWrite")
 	public void createAuthor(Author author) {
-		
-		System.out.println("getCallerPricipal() => " + ctx.getCallerPrincipal());
-		
 		em.persist(author);
 	}
 
+	@RolesAllowed("BSWrite")
 	public void updateAuthor(Author author) {
 		em.merge(author);
 	}
 
+	@RolesAllowed("BSWrite")
 	public void deleteAuthor(long id) {
 		em.remove(em.find(Author.class,id));
 	}

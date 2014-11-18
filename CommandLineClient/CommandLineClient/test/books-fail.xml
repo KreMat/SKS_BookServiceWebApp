@@ -1,0 +1,14 @@
+<books>
+	<book isbn="123" title="fail" subtitle="subfail" description="faildescription" pages="10" language="DE">
+		<publisher name="Publisher1" postcode="40" countrycode="50" />
+		<authors>
+			<author firstname="firstname" lastname="lastname" birthdate="20.10.2000" />
+		</authors>
+	</book>
+	<book isbn="321" title="title2" subtitle="subtitle2" description="description2" pages="20" language="DE">
+		<publisher name="notAvailale" postcode="40" countrycode="50" />
+		<authors>
+			<author firstname="noName" lastname="noName" birthdate="20.10.2000" />
+		</authors>
+	</book>
+</books>
