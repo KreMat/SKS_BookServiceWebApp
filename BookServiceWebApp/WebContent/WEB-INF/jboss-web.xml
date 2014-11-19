@@ -1,0 +1,3 @@
+<jboss-web>
+	<security-domain>BookServiceWebAppSD</security-domain>
+</jboss-web>

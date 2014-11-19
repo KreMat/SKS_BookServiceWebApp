@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for book complex type.
+ * <p>Java-Klasse für book complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType name="book">
@@ -72,7 +72,7 @@ public class Book
     protected Language language;
 
     /**
-     * Gets the value of the publisher property.
+     * Ruft den Wert der publisher-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the publisher property.
+     * Legt den Wert der publisher-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the authors property.
+     * Ruft den Wert der authors-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the authors property.
+     * Legt den Wert der authors-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the isbn property.
+     * Ruft den Wert der isbn-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the isbn property.
+     * Legt den Wert der isbn-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -144,7 +144,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the title property.
+     * Ruft den Wert der title-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the title property.
+     * Legt den Wert der title-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -168,7 +168,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the subtitle property.
+     * Ruft den Wert der subtitle-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -180,7 +180,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the subtitle property.
+     * Legt den Wert der subtitle-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -192,7 +192,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the description property.
+     * Ruft den Wert der description-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -204,7 +204,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the description property.
+     * Legt den Wert der description-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -216,7 +216,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the pages property.
+     * Ruft den Wert der pages-Eigenschaft ab.
      * 
      */
     public long getPages() {
@@ -224,7 +224,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the pages property.
+     * Legt den Wert der pages-Eigenschaft fest.
      * 
      */
     public void setPages(long value) {
@@ -232,7 +232,7 @@ public class Book
     }
 
     /**
-     * Gets the value of the language property.
+     * Ruft den Wert der language-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -244,7 +244,7 @@ public class Book
     }
 
     /**
-     * Sets the value of the language property.
+     * Legt den Wert der language-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -257,9 +257,9 @@ public class Book
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Java-Klasse für anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
      * 
      * <pre>
      * &lt;complexType>

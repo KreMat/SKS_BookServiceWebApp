@@ -10,9 +10,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for author complex type.
+ * <p>Java-Klasse für author complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType name="author">
@@ -45,7 +45,7 @@ public class Author
     protected XMLGregorianCalendar birthday;
 
     /**
-     * Gets the value of the firstname property.
+     * Ruft den Wert der firstname-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class Author
     }
 
     /**
-     * Sets the value of the firstname property.
+     * Legt den Wert der firstname-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class Author
     }
 
     /**
-     * Gets the value of the lastname property.
+     * Ruft den Wert der lastname-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class Author
     }
 
     /**
-     * Sets the value of the lastname property.
+     * Legt den Wert der lastname-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class Author
     }
 
     /**
-     * Gets the value of the birthday property.
+     * Ruft den Wert der birthday-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class Author
     }
 
     /**
-     * Sets the value of the birthday property.
+     * Legt den Wert der birthday-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is

@@ -23,6 +23,10 @@ public class CommandLineClient {
 		if(args.length != 1 || args[0].isEmpty()){
 			throw new IllegalArgumentException("You need one argument with the xml path!");
 		}
+		
+		System.setProperty("com.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize", "true");
+		
+		BookServiceAuthenticator.setAsDefault("writer", "123");
 
 		BookSOAPWebServiceImplService service = new BookSOAPWebServiceImplService();
 		BookSOAPWebService port = service.getBookSOAPWebServiceImplPort();

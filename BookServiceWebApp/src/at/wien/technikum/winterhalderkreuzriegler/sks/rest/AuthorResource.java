@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -24,44 +23,43 @@ import at.wien.technikum.winterhalderkreuzriegler.sks.service.AuthorService;
 @Path("author")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Transactional
 public class AuthorResource {
-	
+
 	@Inject
 	AuthorService service;
-	
+
 	@Context
 	UriInfo ui;
-	
+
 	@GET
-	public List<Author> getAllAuthors(){
+	public List<Author> getAllAuthors() {
 		return service.getAllAuthors();
 	}
-	
+
 	@GET
 	@Path("/{authorId}")
-	public Author getAuthorById(@PathParam("authorId") long authorId){
+	public Author getAuthorById(@PathParam("authorId") long authorId) {
 		return service.getAuthorById(authorId);
 	}
-	
+
 	@POST
-	public Response createAuthor(Author author){
+	public Response createAuthor(Author author) {
 		service.createAuthor(author);
-		
-		URI authorURI = ui.getAbsolutePathBuilder().path(String.valueOf(author.getId())).build();	
+
+		URI authorURI = ui.getAbsolutePathBuilder().path(String.valueOf(author.getId())).build();
 		return Response.created(authorURI).build();
 	}
-	
+
 	@PUT
 	@Path("/{authorId}")
-	public void updateAuthor(@PathParam("authorId") long authorId, Author author){
+	public void updateAuthor(@PathParam("authorId") long authorId, Author author) {
 		author.setId(authorId);
 		service.updateAuthor(author);
 	}
-	
+
 	@DELETE
 	@Path("/{authorId}")
-	public void createAuthor(@PathParam("authorId") long authorId){
+	public void createAuthor(@PathParam("authorId") long authorId) {
 		service.deleteAuthor(authorId);
 	}
 }

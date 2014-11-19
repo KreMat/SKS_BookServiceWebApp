@@ -3,13 +3,14 @@ package at.technikumwien.sks.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for bookDto complex type.
+ * <p>Java-Klasse für bookDto complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType name="bookDto">
@@ -49,10 +50,11 @@ public class BookDto {
     protected String subtitle;
     protected String description;
     protected long pages;
+    @XmlSchemaType(name = "string")
     protected Language language;
 
     /**
-     * Gets the value of the id property.
+     * Ruft den Wert der id-Eigenschaft ab.
      * 
      */
     public long getId() {
@@ -60,7 +62,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the id property.
+     * Legt den Wert der id-Eigenschaft fest.
      * 
      */
     public void setId(long value) {
@@ -68,7 +70,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the isbn property.
+     * Ruft den Wert der isbn-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -80,7 +82,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the isbn property.
+     * Legt den Wert der isbn-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +94,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the title property.
+     * Ruft den Wert der title-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -104,7 +106,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the title property.
+     * Legt den Wert der title-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +118,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the subtitle property.
+     * Ruft den Wert der subtitle-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -128,7 +130,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the subtitle property.
+     * Legt den Wert der subtitle-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +142,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the description property.
+     * Ruft den Wert der description-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -152,7 +154,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the description property.
+     * Legt den Wert der description-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +166,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the pages property.
+     * Ruft den Wert der pages-Eigenschaft ab.
      * 
      */
     public long getPages() {
@@ -172,7 +174,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the pages property.
+     * Legt den Wert der pages-Eigenschaft fest.
      * 
      */
     public void setPages(long value) {
@@ -180,7 +182,7 @@ public class BookDto {
     }
 
     /**
-     * Gets the value of the language property.
+     * Ruft den Wert der language-Eigenschaft ab.
      * 
      * @return
      *     possible object is
@@ -192,7 +194,7 @@ public class BookDto {
     }
 
     /**
-     * Sets the value of the language property.
+     * Legt den Wert der language-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
