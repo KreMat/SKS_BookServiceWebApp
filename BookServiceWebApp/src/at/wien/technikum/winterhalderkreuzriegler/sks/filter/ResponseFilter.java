@@ -15,7 +15,8 @@ public class ResponseFilter implements ContainerResponseFilter {
 	public void filter(ContainerRequestContext request,
 			ContainerResponseContext response) throws IOException {
 		response.getHeaders().add("Access-Control-Allow-Origin", "*");
-		
+		response.getHeaders().add("Access-Control-Allow-Headers", "Authorization"); 
+		System.out.println("CORS");
 		CacheControl cacheControl = new CacheControl();
 		cacheControl.setNoCache(false);
 		response.getHeaders().add("Cache-Control", cacheControl);
