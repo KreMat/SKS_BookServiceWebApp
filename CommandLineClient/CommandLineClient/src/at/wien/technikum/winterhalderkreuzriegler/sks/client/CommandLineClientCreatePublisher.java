@@ -26,15 +26,10 @@ public class CommandLineClientCreatePublisher {
 				.target("http://localhost:8085/BookServiceWebApp/resources/publisher")
 				.register(new RequestFilter("writer", "123"))
 				.request(MediaType.APPLICATION_JSON).post(Entity.json(p));
-		
-		if(response.getStatus() != 200){
-			System.out.println("Import mit Status: " + response.getStatus() + " - " + response.getStatusInfo().getReasonPhrase());	
-		}else{
-			System.out.println("Import erfolgreich abgeschlossen...");
-		}
 
-		
-		
+		System.out.print("Status: " + response.getStatus() + " - "
+				+ response.getStatusInfo().getReasonPhrase());
+
 	}
 
 }

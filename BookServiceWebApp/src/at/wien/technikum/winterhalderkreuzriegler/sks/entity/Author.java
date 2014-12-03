@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -54,8 +52,7 @@ public class Author extends AbstractEntity {
 	 * MANY TO MANY
 	 */
 
-	@ManyToMany
-	@JoinTable(name = "tb_author_has_tb_book", joinColumns = { @JoinColumn(name = "tb_author_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "tb_book_id", nullable = false) })
+	@ManyToMany(mappedBy = "authors")
 	@XmlTransient
 	private List<Book> books = new ArrayList<Book>();
 

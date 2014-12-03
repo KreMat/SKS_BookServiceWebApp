@@ -1,5 +1,6 @@
 package at.wien.technikum.winterhalderkreuzriegler.sks.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -71,10 +73,11 @@ public class Book extends AbstractEntity {
 	 * MANY TO MANY
 	 */
 
-	@ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_author_has_tb_book", joinColumns = { @JoinColumn(name = "tb_book_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "tb_author_id", nullable = false) })
 	@XmlElementWrapper(name = "authors")
 	@XmlElement(name = "author")
-	private List<Author> authors;
+	private List<Author> authors = new ArrayList<Author>();
 
 	/**
 	 * @return the isbn

@@ -24,8 +24,8 @@ public class CommandLineClientCreateAuthor {
 				.target("http://localhost:8085/BookServiceWebApp/resources/author")
 				.register(new RequestFilter("writer", "123")).request(MediaType.APPLICATION_JSON).post(Entity.json(a));
 
-		System.out.println("Import mit Status: " + response.getStatus() + " - "
-				+ response.getStatusInfo().getReasonPhrase() + " abgeschlossen.");
+		System.out.print("Status: " + response.getStatus() + " - "
+				+ response.getStatusInfo().getReasonPhrase());
 
 	}
 

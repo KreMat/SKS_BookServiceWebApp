@@ -48,7 +48,7 @@ public class BookService {
 	@RolesAllowed("BSWrite")
 	public void importBooks(List<Book> books) throws AuthorNotFoundException, PublisherNotFoundException {
 		for (Book b : books) {
-			checkAuthorsExist(b);
+			loadAuthors(b);
 			checkPublisher(b);
 			em.persist(b);
 		}
@@ -66,23 +66,22 @@ public class BookService {
 		b.setPublisher(publisherRead.get(0));
 	}
 
-	private void checkAuthorsExist(Book b) throws AuthorNotFoundException {
+	private void loadAuthors(Book b) throws AuthorNotFoundException {
 		if (b == null || b.getAuthors() == null) {
 			return;
 		}
 		List<Author> readAuthors = new ArrayList<Author>();
 		for (Author a : b.getAuthors()) {
-			readAuthors.add(checkAuthorExist(a));
+			readAuthors.add(loadAuthor(a));
 		}
 		b.setAuthors(readAuthors);
 	}
 
-	private Author checkAuthorExist(Author a) throws AuthorNotFoundException {
+	private Author loadAuthor(Author a) throws AuthorNotFoundException {
 		try {
-			Author authorRead = em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
+			return em.createNamedQuery("Author.selectByFirstAndLastname", Author.class)
 					.setParameter("firstname", a.getFirstname()).setParameter("lastname", a.getLastname())
 					.getSingleResult();
-			return authorRead;
 		} catch (NoResultException e) {
 			throw new AuthorNotFoundException();
 		}
