@@ -49,12 +49,12 @@ public class BookService {
 	public void importBooks(List<Book> books) throws AuthorNotFoundException, PublisherNotFoundException {
 		for (Book b : books) {
 			loadAuthors(b);
-			checkPublisher(b);
+			loadPublisher(b);
 			em.persist(b);
 		}
 	}
 
-	private void checkPublisher(Book b) throws PublisherNotFoundException {
+	private void loadPublisher(Book b) throws PublisherNotFoundException {
 		if (b == null || b.getPublisher() == null) {
 			return;
 		}

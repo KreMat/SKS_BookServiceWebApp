@@ -2,7 +2,7 @@
 	<book isbn="123" title="title-works" subtitle="subtitle-works" description="description" pages="10" language="DE">
 		<publisher name="Publisher1" postcode="40" countrycode="50" />
 		<authors>
-			<author firstname="firstname" lastname="lastname" birthdate="20.10.2000" />
+			<author firstname="firstname" lastname="lastname" birthdate="1970-01-01" />
 		</authors>
 	</book>
 </books>
