@@ -24,7 +24,7 @@ public class CommandLineClientCreatePublisher {
 		Response response = ClientBuilder
 				.newClient()
 				.target("http://localhost:8085/BookServiceWebApp/resources/publisher")
-				.register(new RequestFilter("myuser", "topsecret"))
+				.register(new RequestFilter("writer", "123"))
 				.request(MediaType.APPLICATION_JSON).post(Entity.json(p));
 		
 		if(response.getStatus() != 200){
